@@ -1,0 +1,38 @@
+
+/*header.module.css*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    align-items: center;
+    background-color: #242424;
+    color: #535bf2;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures it stays above other content */
+    width: 100%; /* Ensures it spans the full width */
+    max-width: 1280px;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.title:hover {
+    color: #cfd9dc; /* Change text color on hover */
+    text-shadow: 0 0 10px #cfd9dc, /* Outer glow */
+    0 0 20px #cfd9dc, /* Additional glow */
+    0 0 30px #cfd9dc; /* Even more glow */
+}

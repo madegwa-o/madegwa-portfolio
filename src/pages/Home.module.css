@@ -1,0 +1,181 @@
+/* Main container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: "Inter", sans-serif;
+    color: #f4f4f4;
+    margin-bottom: 100px;
+}
+
+/* Main heading and divider */
+.mainHeading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.mainHeading:hover {
+    color: #cfd9dc; /* Change text color on hover */
+    text-shadow: 0 0 10px #cfd9dc, /* Outer glow */
+    0 0 20px #cfd9dc, /* Additional glow */
+    0 0 30px #cfd9dc; /* Even more glow */
+}
+
+.divider {
+    border: 0;
+    height: 2px;
+    background: #535bf2;
+    margin-bottom: 2rem;
+}
+
+/* Content layout */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+/* Left Section */
+.left {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+/* Avatar and text */
+.avatarSection {
+    margin-bottom: 2rem;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 0.5rem;
+}
+
+/* Links */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.links a {
+    color: #f4f4f4;
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: #535bf2;
+}
+
+/* Right Section */
+.right {
+    flex: 1.5;
+    min-width: 300px;
+    text-align: left;
+}
+
+
+/* Updated intro text styling */
+.intro {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #535bf2;
+    margin-bottom: 1rem;
+}
+
+.intro p {
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    color: #d1d1d1;
+    line-height: 1.8;
+}
+
+/* Responsive text scaling */
+@media (max-width: 768px) {
+    .intro h2 {
+        font-size: 1.8rem;
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+}
+
+/* Skills */
+.skills h2 {
+    margin-bottom: 1rem;
+}
+h2:hover {
+    color: #cfd9dc; /* Change text color on hover */
+    text-shadow: 0 0 10px #cfd9dc, /* Outer glow */
+    0 0 20px #cfd9dc, /* Additional glow */
+    0 0 30px #cfd9dc; /* Even more glow */
+}
+
+.skills p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left,
+    .right {
+        text-align: center;
+    }
+
+    .right {
+        margin-top: 2rem;
+    }
+}
+
+.dragable {
+    background: rgba(255, 255, 255, 0.2); /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Soft border for glass */
+    backdrop-filter: blur(8px); /* Blur effect for glass appearance */
+    border-radius: 12px; /* Smooth corners */
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Glass shadow */
+    padding: 1rem;
+    user-select: none; /* Prevent text selection during dragging */
+    position: absolute; /* Allow absolute positioning */
+    z-index: 9999; /* Place above other elements */
+    cursor: grab; /* Show grab cursor */
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Smooth transition for box shadow and position */
+}
+
+.dragable:active {
+    cursor: grabbing; /* Show grabbing cursor when dragging */
+    box-shadow: 0 4px 16px rgba(31, 38, 135, 0.47); /* Enhance shadow when active */
+}
+

@@ -1,0 +1,47 @@
+.Skills{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Skills h1:hover {
+    color: #cfd9dc; /* Change text color on hover */
+    text-shadow: 0 0 10px #cfd9dc, /* Outer glow */
+    0 0 20px #cfd9dc, /* Additional glow */
+    0 0 30px #cfd9dc; /* Even more glow */
+}
+
+.Lists{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.List ul {
+    list-style-type: none; /* Remove list bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.List li {
+    color: #5f5e5e;;
+}
+
+.List li:hover {
+    color: #0a8f4d;
+}
+
+.List {
+    text-align: center;
+    list-style-type: none;
+    color: #5f5e5e;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.List:hover {
+    color: #f8f6f6;
+}
