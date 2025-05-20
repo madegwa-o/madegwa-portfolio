@@ -1,7 +1,7 @@
 import  {useEffect, useState} from "react";
 import styles from "./Home.module.css";
 import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import mimi from "../assets/mimi.jpeg";
+import mimi from "../assets/mimi.jpg";
 import MySkills from "../components/MySkills.jsx";
 
 const Home = () => {

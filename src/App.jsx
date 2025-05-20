@@ -3,7 +3,7 @@ import './App.css';
 import { Helmet } from "react-helmet";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
-import profileImage from "./assets/mimi.jpeg";
+import profileImage from "./assets/mimi.jpg";
 
 // Additional components for routes
 import Home from './pages/Home.jsx';
