@@ -4,7 +4,7 @@ import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import profileImage from './assets/mimi.jpg';
 import { contactInfo, socialLinks } from './data/contactInfo';
-import useDynamicSEO, { generateBreadcrumbSchema, getPerformanceMetaTags } from './hooks/useDynamicSEO'; // Adjust path as needed
+import useDynamicSEO, { generateBreadcrumbSchema, getPerformanceMetaTags } from './hooks/useDynamicSEO';
 
 function BaseLayout() {
     const seoData = useDynamicSEO();
@@ -13,24 +13,24 @@ function BaseLayout() {
     return (
         <>
             <Helmet>
-                {/* Dynamic SEO data */}
-                <title>{seoData.title}</title>
+                {/* Google Verification */}
                 <meta name="google-site-verification" content="TOBaZiHVk4O2ryRZVRJrjqWNGlo6eHe4fUJNn5T4u48" />
+
+                {/* Dynamic SEO */}
+                <title>{seoData.title}</title>
                 <meta name="title" content={seoData.title} />
                 <meta name="description" content={seoData.description} />
                 <meta name="keywords" content={seoData.keywords} />
 
-                {/* Static meta tags */}
+                {/* General SEO */}
                 <meta name="author" content="Oscar Madegwa" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
                 <meta name="revisit-after" content="7 days" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-                {/* Dynamic canonical URL */}
                 <link rel="canonical" href={seoData.canonical} />
 
-                {/* Open Graph tags with dynamic data */}
+                {/* Open Graph */}
                 <meta property="og:type" content={seoData.type} />
                 <meta property="og:url" content={seoData.url} />
                 <meta property="og:title" content={seoData.title} />
@@ -42,7 +42,7 @@ function BaseLayout() {
                 <meta property="og:site_name" content="Oscar Madegwa Portfolio" />
                 <meta property="og:locale" content="en_US" />
 
-                {/* Twitter Card tags with dynamic data */}
+                {/* Twitter Cards */}
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:url" content={seoData.url} />
                 <meta property="twitter:title" content={seoData.title} />
@@ -52,28 +52,28 @@ function BaseLayout() {
                 <meta property="twitter:creator" content={socialLinks.twitterHandle} />
                 <meta property="twitter:site" content={socialLinks.twitterHandle} />
 
-                {/* Theme and app meta tags */}
+                {/* Theme Color and App Info */}
                 <meta name="theme-color" content="#2563eb" />
                 <meta name="msapplication-TileColor" content="#2563eb" />
                 <meta name="application-name" content="Oscar Madegwa Portfolio" />
 
-                {/* Geographic meta tags */}
+                {/* Geolocation Tags */}
                 <meta name="geo.region" content={contactInfo.location.region} />
                 <meta name="geo.placename" content={contactInfo.location.value.split(',')[0]} />
                 <meta name="geo.position" content={`${contactInfo.location.lat};${contactInfo.location.lng}`} />
                 <meta name="ICBM" content={`${contactInfo.location.lat}, ${contactInfo.location.lng}`} />
 
-                {/* Performance optimization meta tags */}
+                {/* Performance Hints */}
                 {performanceMetaTags}
 
-                {/* Structured Data - Person Schema */}
+                {/* Structured Data: Person */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Person",
                         "name": "Oscar Madegwa",
-                        "jobTitle": "Full-Stack Software Engineer",
-                        "description": "Passionate software engineer specializing in full-stack web development, modern JavaScript frameworks, and innovative digital solutions.",
+                        "jobTitle": "AI/ML And Software Engineer",
+                        "description": "Passionate software engineer specializing in full-stack web development, modern JavaScript frameworks, and AI/ML research.",
                         "url": "https://madegwa.pages.dev/",
                         "image": `https://madegwa.pages.dev${profileImage}`,
                         "sameAs": [
@@ -97,6 +97,8 @@ function BaseLayout() {
                             "JavaScript",
                             "TypeScript",
                             "React",
+                            "AI",
+                            "Machine Learning",
                             "Spring Boot",
                             "Full-Stack Development",
                             "Web Development",
@@ -105,7 +107,7 @@ function BaseLayout() {
                     })}
                 </script>
 
-                {/* Structured Data - Website Schema */}
+                {/* Structured Data: Website */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
@@ -118,6 +120,16 @@ function BaseLayout() {
                             "name": "Oscar Madegwa"
                         },
                         "inLanguage": "en-US",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Oscar Madegwa",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://madegwa.pages.dev/favicon-96x96.png",
+                                "width": 96,
+                                "height": 96
+                            }
+                        },
                         "potentialAction": {
                             "@type": "SearchAction",
                             "target": "https://madegwa.pages.dev/search?q={search_term_string}",
@@ -126,12 +138,12 @@ function BaseLayout() {
                     })}
                 </script>
 
-                {/* Structured Data - Breadcrumbs Schema */}
+                {/* Structured Data: Breadcrumbs */}
                 <script type="application/ld+json">
                     {JSON.stringify(generateBreadcrumbSchema(seoData.breadcrumbs))}
                 </script>
 
-                {/* Structured Data - Professional Service Schema */}
+                {/* Structured Data: Services */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
@@ -157,22 +169,21 @@ function BaseLayout() {
                     })}
                 </script>
 
-                {/* Favicons and app icons */}
+                {/* Icons & Manifest */}
                 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                 <link rel="manifest" href="/site.webmanifest" />
 
-                {/* Font preconnections */}
+                {/* Fonts & DNS */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-                {/* DNS prefetch for external links */}
                 <link rel="dns-prefetch" href="//github.com" />
                 <link rel="dns-prefetch" href="//linkedin.com" />
                 <link rel="dns-prefetch" href="//twitter.com" />
             </Helmet>
+
 
             <Header />
             <main>
