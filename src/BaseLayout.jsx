@@ -15,6 +15,7 @@ function BaseLayout() {
             <Helmet>
                 {/* Dynamic SEO data */}
                 <title>{seoData.title}</title>
+                <meta name="google-site-verification" content="TOBaZiHVk4O2ryRZVRJrjqWNGlo6eHe4fUJNn5T4u48" />
                 <meta name="title" content={seoData.title} />
                 <meta name="description" content={seoData.description} />
                 <meta name="keywords" content={seoData.keywords} />
