@@ -1,125 +1,202 @@
-import  {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaArrowDown } from "react-icons/fa";
 import mimi from "../assets/mimi.jpg";
 import MySkills from "../components/MySkills.jsx";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
-    const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 }); // Center initial position
-    const [dragging, setDragging] = useState(false); // Track dragging state
-    const [offset, setOffset] = useState({ x: 0, y: 0 }); // Track drag offsets
-    const [showCounter, setShowCounter] = useState(true); // Track counter visibility
+    const [isVisible, setIsVisible] = useState(false);
+    const [currentRole, setCurrentRole] = useState(0);
+    const navigate = useNavigate();
+
+    const handleButtonClick = (path) => {
+        navigate(`/${path}`);
+    }
+
+    const roles = [
+        "Software Engineer",
+        "GenAI Engineer",
+        "ML Researcher",
+        "Full Stack Developer",
+        "Tech Blogger",
+        "Problem Solver",
+        "Innovation Enthusiast",
+    ];
 
     useEffect(() => {
-        // Set timeout to hide the counter after 6 seconds
-        const timer = setTimeout(() => {
-            setShowCounter(false);
-        }, 6000);
+        setIsVisible(true);
 
-        // Cleanup timeout if the component unmounts
-        return () => clearTimeout(timer);
+        // Role rotation
+        const roleInterval = setInterval(() => {
+            setCurrentRole((prev) => (prev + 1) % roles.length);
+        }, 3000);
+
+        return () => clearInterval(roleInterval);
     }, []);
 
-    const handleDragStart = (e) => {
-        setDragging(true);
-        const rect = e.target.getBoundingClientRect();
-        setOffset({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
-    };
-
-    const handleDrag = (e) => {
-        if (!dragging) return;
-        e.preventDefault(); // Prevent unwanted selection
-        setPosition({
-            x: e.clientX - offset.x,
-            y: e.clientY - offset.y,
-        });
-    };
-
-    const handleDragEnd = () => {
-        setDragging(false);
-    };
-
     return (
-        <div
-            className={styles.container}
-            onMouseMove={handleDrag}
-            onMouseUp={handleDragEnd}
-            onMouseLeave={handleDragEnd}
-        >
-            <h1 className={styles.mainHeading}>Oscar Madegwa</h1>
-            <hr className={styles.divider} />
-            <div className={styles.content}>
-                <div className={styles.left}>
-                    <div className={styles.avatarSection}>
-                        <img src={mimi} alt="Madegwa Oscar" className={styles.avatar} />
-                        <h1 className={styles.name}>Madegwa Oscar</h1>
-                        <p className={styles.subtitle}>Software Engineer, Tech Blogger & Tech Enthusiast</p>
+        <div className={styles.container}>
+            {/* Hero Section */}
+            <section className={`${styles.hero} ${isVisible ? styles.fadeInUp : ''}`}>
+                <div className={styles.heroContent}>
+                    <div className={styles.avatarContainer}>
+                        <div className={styles.avatarWrapper}>
+                            <img src={mimi} alt="Oscar Madegwa" className={styles.avatar} />
+                            <div className={styles.avatarGlow}></div>
+                        </div>
                     </div>
-                    <div className={styles.links}>
-                        <a href="https://github.com/madegwa-o" target="_blank" rel="noopener noreferrer">
-                            <FaGithub size={24} />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/oscar-madegwa-528986289"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FaLinkedin size={24} />
-                        </a>
-                        <a href="mailto:madegwaoscar317@gmail.com">
-                            <FaEnvelope size={24} />
-                        </a>
-                        <a href="https://x.com/madegwaO_" target="_blank" rel="noopener noreferrer">
-                            <FaTwitter size={24} />
-                        </a>
-                    </div>
-                </div>
-                <div className={styles.right}>
-                    <div className={styles.intro}>
-                        <h2>Hello World!</h2>
-                        <p>
-                            Hi, I'm Oscar Madegwa. I’m a Software Engineer, Tech Blogger, and an innovator who thrives
-                            on creating impactful solutions to real-world problems.
-                        </p>
-                        <p>
-                            With a passion for programming, storytelling, and empowering others, I leverage technology
-                            to bridge gaps and inspire growth. I believe in the power of sharing knowledge, which drives
-                            my open-source contributions and technical content creation.
-                        </p>
-                        <p>
-                            Whether building scalable web applications, mentoring budding developers, or exploring
-                            emerging technologies, my journey is fueled by curiosity and a commitment to excellence.
-                        </p>
-                        <p>
-                            Let’s connect and create together—because the future of tech belongs to those who dare to
-                            dream and build.
-                        </p>
-                    </div>
-                    <div className={styles.skills}>
-                        <h2>Skills & Tools</h2>
-                        <MySkills />
-                    </div>
-                </div>
-            </div>
 
+                    <div className={styles.heroText}>
+                        <h1 className={styles.heroTitle}>
+                            <span className={styles.greeting}>Hello, I'm</span>
+                            <span className={styles.name}>Oscar Madegwa</span>
+                        </h1>
 
-            {/* Draggable Visitor Counter */}
-            {showCounter && (
-                <div
-                    className={styles.dragable}
-                    style={{
-                        top: `${position.y}px`,
-                        left: `${position.x}px`,
-                    }}
-                    onMouseDown={handleDragStart}
-                >
-                    <h3>Visitor count</h3>
-                    <img src="https://profile-counter.glitch.me/madegwa-o/count.svg" alt="visitor count" />
+                        <div className={styles.roleContainer}>
+                            <span className={styles.rolePrefix}>I'm a </span>
+                            <span className={styles.role} key={currentRole}>
+                                {roles[currentRole]}
+                            </span>
+                        </div>
+
+                        <p className={styles.heroDescription}>
+                            Passionate about creating impactful solutions and bridging the gap between
+                            innovative ideas and real-world implementations. I thrive on challenges that
+                            push the boundaries of what's possible.
+                        </p>
+
+                        <div className={styles.heroActions}>
+                            <button className={styles.primaryButton} onClick={() => {handleButtonClick('projects')}}>
+                                View My Work
+                            </button>
+                            <button className={styles.secondaryButton} onClick={() => {handleButtonClick('contact')}}>
+                                Let's Connect
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            )}
+
+                <div className={styles.scrollIndicator}>
+                    <FaArrowDown className={styles.scrollIcon} />
+                </div>
+            </section>
+
+            {/* About Section */}
+            <section className={`${styles.section} ${styles.about}`}>
+                <div className={styles.sectionContent}>
+                    <div className={styles.aboutGrid}>
+                        <div className={styles.aboutText}>
+                            <h2 className={styles.sectionTitle}>
+                                Crafting Digital Experiences
+                            </h2>
+                            <div className={styles.aboutDescription}>
+                                <p>
+                                    I'm a software engineer with a passion for building scalable,
+                                    user-centric applications that make a difference. My journey
+                                    spans full-stack development, technical writing, and mentoring
+                                    the next generation of developers.
+                                </p>
+                                <p>
+                                    With expertise in modern web technologies and a keen eye for
+                                    design, I bridge the gap between technical excellence and
+                                    exceptional user experiences. I believe in the power of
+                                    clean code, thoughtful architecture, and continuous learning.
+                                </p>
+                                <p>
+                                    When I'm not coding, you'll find me sharing knowledge through
+                                    technical blogs, contributing to open-source projects, or
+                                    exploring the latest trends in technology and innovation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className={styles.statsGrid}>
+                            <div className={styles.statCard}>
+                                <div className={styles.statNumber}>50+</div>
+                                <div className={styles.statLabel}>Projects Completed</div>
+                            </div>
+                            <div className={styles.statCard}>
+                                <div className={styles.statNumber}>2+</div>
+                                <div className={styles.statLabel}>Years Experience</div>
+                            </div>
+                            <div className={styles.statCard}>
+                                <div className={styles.statNumber}>20+</div>
+                                <div className={styles.statLabel}>Blog Articles</div>
+                            </div>
+                            <div className={styles.statCard}>
+                                <div className={styles.statNumber}>100+</div>
+                                <div className={styles.statLabel}>GitHub Contributions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Skills Section */}
+            <section className={`${styles.section} ${styles.skills}`}>
+                <div className={styles.sectionContent}>
+                    <h2 className={styles.sectionTitle}>Skills & Expertise</h2>
+                    <p className={styles.sectionSubtitle}>
+                        Technologies and tools I use to bring ideas to life
+                    </p>
+                    <MySkills />
+                </div>
+            </section>
+
+            {/* Connect Section */}
+            <section className={`${styles.section} ${styles.connect}`}>
+                <div className={styles.sectionContent}>
+                    <div className={styles.connectCard}>
+                        <h2 className={styles.connectTitle}>Let's Build Something Amazing</h2>
+                        <p className={styles.connectDescription}>
+                            Have a project in mind or just want to chat about technology?
+                            I'm always open to new opportunities and interesting conversations.
+                        </p>
+
+                        <div className={styles.socialLinks}>
+                            <a
+                                href="https://github.com/madegwa-o"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.socialLink}
+                                aria-label="GitHub Profile"
+                            >
+                                <FaGithub />
+                                <span>GitHub</span>
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/oscar-madegwa-528986289"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.socialLink}
+                                aria-label="LinkedIn Profile"
+                            >
+                                <FaLinkedin />
+                                <span>LinkedIn</span>
+                            </a>
+                            <a
+                                href="https://x.com/madegwaO_"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.socialLink}
+                                aria-label="Twitter Profile"
+                            >
+                                <FaTwitter />
+                                <span>Twitter</span>
+                            </a>
+                            <a
+                                href="mailto:madegwaoscar317@gmail.com"
+                                className={styles.socialLink}
+                                aria-label="Email Contact"
+                            >
+                                <FaEnvelope />
+                                <span>Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

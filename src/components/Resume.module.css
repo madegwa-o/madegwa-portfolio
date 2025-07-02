@@ -1,0 +1,343 @@
+/* Resume.module.css - Imports theme colors from index.css */
+
+.resumeContainer {
+    min-height: 100vh;
+    margin-top: var(--space-10);
+    background-color: var(--color-bg-primary);
+    padding: var(--space-8) 0;
+}
+
+.resumeWrapper {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    background-color: var(--color-bg-primary);
+    overflow: hidden;
+}
+
+/* Print Button */
+.printButton {
+    position: fixed;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    background: var(--gradient-primary);
+    color: var(--color-text-primary);
+    border: none;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    z-index: var(--z-fixed);
+}
+
+.printButton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.resumeContent {
+    padding: var(--space-8);
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+
+.name {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+    letter-spacing: var(--letter-spacing-wide);
+    font-family: var(--font-family-display);
+}
+
+.contactInfo {
+    color: var(--color-text-secondary);
+}
+
+.location {
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-base);
+}
+
+.contactRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-2);
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.contactLink {
+    color: var(--color-primary-light);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.contactLink:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: var(--space-8);
+}
+
+.sectionTitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border-primary);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-family: var(--font-family-display);
+}
+
+/* Objective */
+.objectiveText {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    text-align: justify;
+    font-size: var(--font-size-base);
+}
+
+/* Education */
+.educationItem {
+    margin-bottom: var(--space-4);
+}
+
+.degree {
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-base);
+}
+
+.institution {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-1);
+}
+
+.date {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* Skills */
+.skillsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.skillCategory {
+    display: flex;
+    flex-direction: column;
+}
+
+.skillTitle {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-base);
+}
+
+.skillItems {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
+}
+
+/* Experience */
+.experienceItem {
+    margin-bottom: var(--space-6);
+}
+
+.position {
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-base);
+}
+
+.company {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-1);
+}
+
+.experienceDate {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-3);
+}
+
+.responsibilities {
+    list-style: disc;
+    margin-left: var(--space-5);
+    color: var(--color-text-secondary);
+}
+
+.responsibilities li {
+    margin-bottom: var(--space-2);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Projects */
+.projectItem {
+    margin-bottom: var(--space-6);
+}
+
+.projectName {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+}
+
+.projectDescription {
+    list-style: disc;
+    margin-left: var(--space-5);
+    color: var(--color-text-secondary);
+}
+
+.projectDescription li {
+    margin-bottom: var(--space-2);
+    line-height: var(--line-height-relaxed);
+}
+
+.technologies {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Attributes */
+.attributes {
+    list-style: disc;
+    margin-left: var(--space-5);
+    color: var(--color-text-secondary);
+}
+
+.attributes li {
+    margin-bottom: var(--space-2);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .resumeContent {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .name {
+        font-size: var(--font-size-4xl);
+    }
+
+    .contactRow {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .printButton {
+        top: var(--space-2);
+        right: var(--space-2);
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--font-size-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .resumeContent {
+        padding: var(--space-4) var(--space-3);
+    }
+
+    .name {
+        font-size: var(--font-size-3xl);
+    }
+
+    .sectionTitle {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .resumeContainer {
+        background: white;
+        padding: 0;
+    }
+
+    .resumeWrapper {
+        box-shadow: none;
+        max-width: none;
+        border-radius: 0;
+    }
+
+    .resumeContent {
+        padding: var(--space-6);
+    }
+
+    .printButton {
+        display: none;
+    }
+
+    .header {
+        border-bottom-color: #2c3e50;
+    }
+
+    .name,
+    .sectionTitle,
+    .institution,
+    .company,
+    .projectName,
+    .skillTitle {
+        color: #2c3e50 !important;
+    }
+
+    .objectiveText,
+    .responsibilities,
+    .projectDescription,
+    .attributes,
+    .skillItems {
+        color: #444 !important;
+    }
+
+    .degree,
+    .position,
+    .date,
+    .experienceDate {
+        color: #666 !important;
+    }
+
+    .contactInfo,
+    .location {
+        color: #555 !important;
+    }
+
+    .contactLink {
+        color: #3498db !important;
+    }
+}
